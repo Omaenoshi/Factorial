@@ -63,19 +63,19 @@ namespace NewNamespace
         }
         static void BlinkBox(int lenght, int variable, long result)
         {
-            SetCursor(1, lenght);
+            SetCursor(3, lenght);
             WriteBox(lenght, '╓', '─', '╖');
             SetCursor(2, lenght);
             WriteBox(variable, '║', '║', result);
-            SetCursor(3, lenght);
+            SetCursor(1, lenght);
             WriteBox(lenght, '╙', '─', '╜');
         }
-        static void SetCursor(int i, int lenght)
+        static void SetCursor(int step, int lenght)
         {
             int centerlenght = lenght + 2;
             int x = Console.WindowWidth;
             int y = Console.WindowHeight;
-            Console.SetCursorPosition((x / 2 - centerlenght / 2), (y / 2 - 5 + i));
+            Console.SetCursorPosition((x / 2 - centerlenght / 2), (y / 2 - 3/2 - step)); // 3 на 2 потому что у таблички 3 строчки
         }
 
         static void Main(string[] args)
