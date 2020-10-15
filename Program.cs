@@ -63,11 +63,21 @@ namespace NewNamespace
         }
         static void BlinkBox(int lenght, int variable, int result)
         {
-            Console.ForegroundColor = ConsoleColor.Black;
+            SetCursor(1, lenght);
             WriteBox(lenght, '╓', '─', '╖');
+            SetCursor(2, lenght);
             WriteBox(variable, '║', '║', result);
+            SetCursor(3, lenght);
             WriteBox(lenght, '╙', '─', '╜');
         }
+        static void SetCursor(int i, int lenght)
+        {
+            int centerlenght = lenght + 2;
+            int x = Console.WindowWidth;
+            int y = Console.WindowHeight;
+            Console.SetCursorPosition((x / 2 - centerlenght / 2), (y / 2 - 5 + i));
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Введите факториал.");
@@ -77,12 +87,19 @@ namespace NewNamespace
             Console.Clear();
             while (true)
             {
-                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Green;
                 BlinkBox(lenght, variable, result);
-                Console.ResetColor();
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                BlinkBox(lenght, variable, result);
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                BlinkBox(lenght, variable, result);
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
             }
-           
-
         }
     }
 }
