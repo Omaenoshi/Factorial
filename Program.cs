@@ -1,26 +1,23 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 
 namespace NewNamespace
 {
     class Program
     {
-        static bool IsCorrectForm(int variable)
+        static bool IsCorrectForm(string str, out int result)
         {
-            if (variable >= 0)
+            if (str.Contains('!'))
             {
-                return true;
+                str = str.Replace("!", null);
             }
-            else
-            {
-                return false;
-            }
+            return Int32.TryParse(str, out result);
         }
 
         static int ReadVariable()
         {
             int result;
-            if (Int32.TryParse(Console.ReadLine(), out result) && (IsCorrectForm(result)))
+            string variable = Console.ReadLine();
+            if (IsCorrectForm(variable, out result) && result >= 0)
             {
                 return result;
             }
@@ -57,7 +54,7 @@ namespace NewNamespace
             }
             Console.WriteLine(endSym);
         }
-        static void WriteBox(int variable, char beginSym, char centerSym, char endSym, int result)
+        static void WriteBox(int variable, char beginSym, char endSym, int result)
         {
             Console.Write(beginSym);
             Console.Write($" {variable}! = {result} ");
@@ -65,16 +62,13 @@ namespace NewNamespace
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите значение факториала.");
+            Console.WriteLine("Введите факториал.");
             int variable = ReadVariable();
             var result = GetFactorial(variable);
             var lenght = GetLenght(variable, result);
             WriteBox(lenght, '╓', '─', '╖');
-            WriteBox(variable, '║', ' ', '║', result);
+            WriteBox(variable, '║', '║', result);
             WriteBox(lenght, '╙', '─', '╜');
-           // Console.WriteLine($"╓─────╖ ");
-           // Console.WriteLine($" ║ {result} ║");
-           // Console.WriteLine($" ╙ ───── ╜ ");
 
         }
     }
