@@ -28,7 +28,7 @@ namespace NewNamespace
                 return ReadVariable();
             }
         }
-        static int GetFactorial(int x)
+        static long GetFactorial(int x)
         {
             if (x == 0)
             {
@@ -39,7 +39,7 @@ namespace NewNamespace
                 return x * GetFactorial(x - 1);
             }
         }
-        static int GetLenght(int variable, int result)
+        static int GetLenght(int variable, long result)
         {
             var lenghtOfVariable = variable.ToString().Length;
             var lenghtOfResult = result.ToString().Length;
@@ -55,13 +55,13 @@ namespace NewNamespace
             }
             Console.WriteLine(endSym);
         }
-        static void WriteBox(int variable, char beginSym, char endSym, int result)
+        static void WriteBox(int variable, char beginSym, char endSym, long result)
         {
             Console.Write(beginSym);
             Console.Write($" {variable}! = {result} ");
             Console.WriteLine(endSym);
         }
-        static void BlinkBox(int lenght, int variable, int result)
+        static void BlinkBox(int lenght, int variable, long result)
         {
             SetCursor(1, lenght);
             WriteBox(lenght, '╓', '─', '╖');
