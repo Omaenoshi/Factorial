@@ -87,17 +87,15 @@ namespace NewNamespace
             Console.Clear();
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                BlinkBox(lenght, variable, result);
-                System.Threading.Thread.Sleep(1000);
-                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 BlinkBox(lenght, variable, result);
-                System.Threading.Thread.Sleep(1000);
+                Console.BackgroundColor = ConsoleColor.Gray;
+                System.Threading.Thread.Sleep(500);
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Black;
                 BlinkBox(lenght, variable, result);
-                System.Threading.Thread.Sleep(1000);
+                Console.BackgroundColor = ConsoleColor.Black;
+                System.Threading.Thread.Sleep(500);
                 Console.Clear();
             }
         }
